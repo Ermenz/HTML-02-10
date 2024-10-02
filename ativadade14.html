@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Média</title>
+</head>
+<body>
+    <h1>Cálculo de Média</h1>
+    <form onsubmit="return calcularMedia()">
+        <input type="number" step="any" id="nota1" placeholder="Primeira nota" required>
+        <input type="number" step="any" id="nota2" placeholder="Segunda nota" required>
+        <input type="number" step="any" id="nota3" placeholder="Terceira nota" required>
+        <button type="submit">Calcular</button>
+    </form>
+    <p id="resultadoMedia"></p>
+
+    <script>
+        function calcularMedia() {
+            let nota1 = parseFloat(document.getElementById("nota1").value);
+            let nota2 = parseFloat(document.getElementById("nota2").value);
+            let nota3 = parseFloat(document.getElementById("nota3").value);
+            let media = (nota1 + nota2 + nota3) / 3;
+            let resultado = document.getElementById("resultadoMedia");
+
+            resultado.textContent = `Média do aluno: ${media.toFixed(2)}`;
+
+            if (media >= 7.0) {
+                resultado.textContent += " - Aprovado";
+            } else if (media >= 4.0 && media < 7.0) {
+                resultado.textContent += " - Reprovado com direito a recuperação";
+            } else {
+                resultado.textContent += " - Reprovado sem direito a recuperação";
+            }
+
+            return false;
+        }
+    </script>
+</body>
+</html>

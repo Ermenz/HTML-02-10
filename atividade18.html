@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Desconto</title>
+</head>
+<body>
+    <h1>Cálculo de Desconto</h1>
+    <form onsubmit="return calcularDesconto()">
+        <input type="number" step="0.01" id="precoUnitario" placeholder="Preço unitário" required>
+        <input type="number" id="QuantidadeItens" placeholder="Quantidade de itens" required>
+        <button type="submit">Calcular</button>
+    </form>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularDesconto() {
+            let precoUnitario = parseFloat(document.getElementById("precoUnitario").value);
+            let QuantidadeItens = parseInt(document.getElementById("QuantidadeItens").value);
+            let desconto = 0;
+
+            if (QuantidadeItens >= 10) {
+                desconto = 0.20;
+            } else if (QuantidadeItens >= 5) {
+                desconto = 0.10;
+            }
+
+            let valorTotal = precoUnitario * QuantidadeItens;
+            let valorDesconto = valorTotal * desconto;
+            let valorFinal = valorTotal - valorDesconto;
+
+            document.getElementById("resultado").textContent = 
+                `Valor total sem desconto: R$ ${valorTotal.toFixed(2)}\n` +
+                `Valor do desconto: R$ ${valorDesconto.toFixed(2)}\n` +
+                `Valor final após desconto: R$ ${valorFinal.toFixed(2)}`;
+
+            return false;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Par ou Ímpar</title>
+</head>
+<body>
+    <h1>Verificador de Par ou Ímpar</h1>
+    <form onsubmit="return checarNumero()">
+        <input type="number" id="entradaNumero" placeholder="Informe um número" required>
+        <button type="submit">Verificar</button>
+    </form>
+    <p id="resultadoNumero"></p>
+
+    <script>
+        function checarNumero() {
+            let valor = parseInt(document.getElementById("entradaNumero").value);
+            let resultado = document.getElementById("resultadoNumero");
+
+            if (valor % 2 === 0) {
+                resultado.textContent = "Par";
+            } else {
+                resultado.textContent = "Ímpar";
+            }
+
+            return false;
+        }
+    </script>
+</body>
+</html>

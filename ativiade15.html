@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Número</title>
+</head>
+<body>
+    <h1>Verificador de Número</h1>
+    <form onsubmit="return avaliarNumero()">
+        <input type="number" step="any" id="entradaNumero" placeholder="Informe um número" required>
+        <button type="submit">Verificar</button>
+    </form>
+    <p id="resultadoNumero"></p>
+
+    <script>
+        function avaliarNumero() {
+            let valor = parseFloat(document.getElementById("entradaNumero").value);
+            let resultado = document.getElementById("resultadoNumero");
+
+            if (valor > 0) {
+                resultado.textContent = "Positivo";
+            } else if (valor < 0) {
+                resultado.textContent = "Negativo";
+            } else {
+                resultado.textContent = "Zero";
+            }
+
+            return false;
+        }
+    </script>
+</body>
+</html>

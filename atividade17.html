@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Desconto</title>
+</head>
+<body>
+    <h1>Cálculo de Desconto</h1>
+    <form onsubmit="return calcularValorFinal()">
+        <input type="number" step="0.01" id="precoTotal" placeholder="Valor total da compra" required>
+        <input type="text" id="tipoCliente" placeholder="Categoria (Premium/Regular)" required>
+        <button type="submit">Calcular</button>
+    </form>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularValorFinal() {
+            let precoTotal = parseFloat(document.getElementById("precoTotal").value);
+            let tipoCliente = document.getElementById("tipoCliente").value.toLowerCase();
+            let taxaDesconto = 0;
+
+            if (tipoCliente === "premium") {
+                taxaDesconto = 0.20;
+            } else if (tipoCliente === "regular") {
+                taxaDesconto = 0.10;
+            } else {
+                document.getElementById("resultado").textContent = "Categoria inválida.";
+                return false;
+            }
+
+            let valorDesconto = precoTotal * taxaDesconto;
+            let precoFinal = precoTotal - valorDesconto;
+
+            document.getElementById("resultado").textContent = 
+                `Valor do desconto: R$ ${valorDesconto.toFixed(2)}\n` +
+                `Valor final após desconto: R$ ${precoFinal.toFixed(2)}`;
+
+            return false;
+        }
+    </script>
+</body>
+</html>

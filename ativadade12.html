@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtrar Números</title>
+</head>
+<body>
+    <h1>Filtrar Números Pares e Ímpares</h1>
+    <button onclick="filtrarNumeros()">Executar</button>
+    <p id="resultadoNumeros"></p>
+
+    <script>
+        function filtrarNumeros() {
+            let numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+            let pares = [];
+            let impares = [];
+
+            numeros.forEach(numero => {
+                if (numero % 2 === 0) {
+                    pares.push(numero);
+                } else {
+                    impares.push(numero);
+                }
+            });
+
+            impares.reverse();
+            let resultado = [...impares, ...pares];
+
+            document.getElementById("resultadoNumeros").textContent = 
+                "Números ímpares invertidos e pares originais concatenados: " + resultado;
+        }
+    </script>
+</body>
+</html>

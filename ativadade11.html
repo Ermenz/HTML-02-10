@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificar Ordem de Arrays</title>
+    <script>
+        function verificarOrdem(valores) {
+            let estado = "Nenhuma das duas";
+
+            if (valores.length < 2) {
+                return "Array muito pequeno para verificação.";
+            }
+
+            let crescente = true;
+            let decrescente = true;
+
+            for (let i = 0; i < valores.length - 1; i++) {
+                if (valores[i] < valores[i + 1]) {
+                    decrescente = false;
+                } else if (valores[i] > valores[i + 1]) {
+                    crescente = false;
+                }
+            }
+
+            if (crescente) {
+                estado = "Crescente";
+            } else if (decrescente) {
+                estado = "Decrescente";
+            }
+
+            return estado;
+        }
+
+        function verificar() {
+            const arrayEntrada = document.getElementById("arrayInput").value.split(",").map(num => parseFloat(num.trim()));
+            const resultado = verificarOrdem(arrayEntrada);
+            const tamanho = arrayEntrada.length;
+            document.getElementById("resultadoEntrada").innerText = `Array (${arrayEntrada}) tem ${tamanho} valores e está em ordem: ${resultado}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Verificação de Ordem de Arrays</h1>
+    <p>Digite números separados por vírgula para verificar a ordem. Exemplo: <strong>1, 3, 5, 7, 9</strong> para crescente, <strong>5, 4, 3</strong> para decrescente, ou <strong>2, 3, 1</strong> para nenhuma das duas.</p>
+
+    <h2>Verificar Array:</h2>
+    <input type="text" id="arrayInput" placeholder="Digite os números separados por vírgula" />
+    <button onclick="verificar()">Verificar</button>
+
+    <p id="resultadoEntrada"></p>
+</body>
+</html>

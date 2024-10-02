@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+
+function todosSaoPares(array){
+    return array.every(function(numero){
+        return numero % 2 === 0;
+    });
+}
+
+let numeros = [2,4,6,8,10];
+console.log(todosSaoPares(numeros));
+
+numeros = [1,2,3,4,5];
+console.log(todosSaoPares(numeros)); 
+
+   </script> 
+ 
+</body>
+</html>
